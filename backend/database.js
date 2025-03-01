@@ -106,8 +106,9 @@ const deleteTeacher = async (id) => {
 // ============== Student Related endpoints ==============
 
 //Get all students list from the database
+//Backend task01 - Update the readStudents function to read all student data.
 const readStudents = async () => {
-    const sql = `SELECT * FROM student`               //backend task01 done.
+    const sql = `SELECT * FROM student`               
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
@@ -120,12 +121,13 @@ const readStudents = async () => {
     });
 }
 
-//Retrieve selected student information
+// Retrieve selected student information by ID
+//Backend task02 - Update the readStudentInfo function to read the information of a specified student.
 const readStudentInfo = async (id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `SELECT * FROM student WHERE id = ?`;
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql, [id])  // Use parameterized query to prevent SQL injection
             .then((data) => {
                 resolve(data);
             })
@@ -133,7 +135,7 @@ const readStudentInfo = async (id) => {
                 reject(error);
             });
     });
-}
+};
 
 //Add new student to the database
 const addStudent = async (id, name, age, religion) => {
