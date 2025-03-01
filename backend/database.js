@@ -44,11 +44,12 @@ const readTeachers = async () => {
 }
 
 //Retrieve selected teacher information
+//Backend task02 - Update the readTeacherInfo function to read the information of a specified teacher.
 const readTeacherInfo = async (id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `SELECT * FROM teacher WHERE id = ?`;
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql, [id])  // Use parameterized query to prevent SQL injection
             .then((data) => {
                 resolve(data);
             })
