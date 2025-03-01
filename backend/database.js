@@ -28,8 +28,9 @@ const dbinitialize = async () => {
 // ============== Teacher Related endpoints ==============
 
 //Get all teachers list from the database
+//Backend task01 - Update the readTeachers function to read all teacher data.
 const readTeachers = async () => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `SELECT * FROM teacher`
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
