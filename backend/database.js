@@ -107,7 +107,7 @@ const deleteTeacher = async (id) => {
 
 //Get all students list from the database
 const readStudents = async () => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `SELECT * FROM student`               //backend task01 done.
     return new Promise((resolve, reject) => {
         knex_db
             .raw(sql)
