@@ -76,13 +76,14 @@ const addTeacher = async (id, name, age) => {
 }
 
 //Update existing teacher information
+//Backend task04 - Update the updateTeacher function to update details of a specific teacher.
 const updateTeacher = async (name, age, id) => {
-    const sql = `SELECT * FROM dummyData`
+    const sql = `UPDATE teacher SET name=?, age=? WHERE id=?`
     return new Promise((resolve, reject) => {
         knex_db
-            .raw(sql)
+            .raw(sql, [name, age, id])
             .then((data) => {
-                resolve(data);
+                resolve({status: "Successfully updated Teacher"});
             })
             .catch((error) => {
                 reject(error);
