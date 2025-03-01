@@ -1,3 +1,4 @@
+//Database connection 
 const dbConnection = require("./sqlite");
 
 dbConnection
@@ -16,12 +17,17 @@ function init(db) {
     _db = db;
 }
 
+//Database configuration
 const knex_db = require("./db-config");
 
+//Database initialization
 const dbinitialize = async () => {
     testBase.resetDatabase(knex_db);
 }
 
+// ============== Teacher Related endpoints ==============
+
+//Get all teachers list from the database
 const readTeachers = async () => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -36,6 +42,7 @@ const readTeachers = async () => {
     });
 }
 
+//Retrieve selected teacher information
 const readTeacherInfo = async (id) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -50,6 +57,7 @@ const readTeacherInfo = async (id) => {
     });
 }
 
+//Add new teacher to the database
 const addTeacher = async (id, name, age) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -64,6 +72,7 @@ const addTeacher = async (id, name, age) => {
     });
 }
 
+//Update existing teacher information
 const updateTeacher = async (name, age, id) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -78,6 +87,7 @@ const updateTeacher = async (name, age, id) => {
     });
 }
 
+//Delete exixting teacher from the database
 const deleteTeacher = async (id) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -92,6 +102,10 @@ const deleteTeacher = async (id) => {
     });
 }
 
+
+// ============== Student Related endpoints ==============
+
+//Get all students list from the database
 const readStudents = async () => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -106,6 +120,7 @@ const readStudents = async () => {
     });
 }
 
+//Retrieve selected student information
 const readStudentInfo = async (id) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -120,6 +135,7 @@ const readStudentInfo = async (id) => {
     });
 }
 
+//Add new student to the database
 const addStudent = async (id, name, age, religion) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -134,6 +150,7 @@ const addStudent = async (id, name, age, religion) => {
     });
 }
 
+//Update existing student information
 const updateStudent = async (name, age, religion, id) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
@@ -148,6 +165,7 @@ const updateStudent = async (name, age, religion, id) => {
     });
 } 
 
+//Delete exixting student from the database
 const deleteStudent = async (id) => {
     const sql = `SELECT * FROM dummyData`
     return new Promise((resolve, reject) => {
